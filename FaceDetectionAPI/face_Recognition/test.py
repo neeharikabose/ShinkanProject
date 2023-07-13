@@ -10,27 +10,11 @@ import onnxruntime as ort
 from onnx_tf.backend import prepare
 
 def area_of(left_top, right_bottom):
-    """
-    Compute the areas of rectangles given two corners.
-    Args:
-        left_top (N, 2): left top corner.
-        right_bottom (N, 2): right bottom corner.
-    Returns:
-        area (N): return the area.
-    """
     hw = np.clip(right_bottom - left_top, 0.0, None)
     return hw[..., 0] * hw[..., 1]
 
 def iou_of(boxes0, boxes1, eps=1e-5):
-    """
-    Return intersection-over-union (Jaccard index) of boxes.
-    Args:
-        boxes0 (N, 4): ground truth boxes.
-        boxes1 (N or 1, 4): predicted boxes.
-        eps: a small number to avoid 0 as denominator.
-    Returns:
-        iou (N): IoU values.
-    """
+ 
     overlap_left_top = np.maximum(boxes0[..., :2], boxes1[..., :2])
     overlap_right_bottom = np.minimum(boxes0[..., 2:], boxes1[..., 2:])
 
@@ -40,17 +24,7 @@ def iou_of(boxes0, boxes1, eps=1e-5):
     return overlap_area / (area0 + area1 - overlap_area + eps)
 
 def hard_nms(box_scores, iou_threshold, top_k=-1, candidate_size=200):
-    """
-    Perform hard non-maximum-supression to filter out boxes with iou greater
-    than threshold
-    Args:
-        box_scores (N, 5): boxes in corner-form and probabilities.
-        iou_threshold: intersection over union threshold.
-        top_k: keep top_k results. If k <= 0, keep all the results.
-        candidate_size: only consider the candidates with the highest scores.
-    Returns:
-        picked: a list of indexes of the kept boxes
-    """
+
     scores = box_scores[:, -1]
     boxes = box_scores[:, :-1]
     picked = []
@@ -73,20 +47,7 @@ def hard_nms(box_scores, iou_threshold, top_k=-1, candidate_size=200):
     return box_scores[picked, :]
 
 def predict(width, height, confidences, boxes, prob_threshold, iou_threshold=0.5, top_k=-1):
-    """
-    Select boxes that contain human faces
-    Args:
-        width: original image width
-        height: original image height
-        confidences (N, 2): confidence array
-        boxes (N, 4): boxes array in corner-form
-        iou_threshold: intersection over union threshold.
-        top_k: keep top_k results. If k <= 0, keep all the results.
-    Returns:
-        boxes (k, 4): an array of boxes kept
-        labels (k): an array of labels for each boxes kept
-        probs (k): an array of probabilities for each boxes being in corresponding labels
-    """
+
     boxes = boxes[0]
     confidences = confidences[0]
     picked_box_probs = []
