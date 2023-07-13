@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: white;
+  color: black;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.container {
+  width: 400px;
+  padding: 20px;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+.logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 250px;
+}
+
+h1 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.form {
+  margin-bottom: 13px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  width: 100%;
+  padding: 15px 15px;
+  font-size: 16px;
+  background-image: linear-gradient(to right bottom, #ffc100, #ff9a00, #ff7400,  	#ff4d00, #ff0000);
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  transition: transform 0.5s ease;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+button {
+  width: 100%;
+  padding: 15px 15px;
+  font-size: 16px;
+  background-image: linear-gradient(to right bottom, #ffc100, #ff9a00, #ff7400,  	#ff4d00, #ff0000);
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  transition: transform 0.5s ease;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.scaling-button {
+  transform: scale(1);
+  transition: transform 0.5s ease;
+}
+
+.scaling-button:hover {
+  transform: scale(1.03);
+}
+input[type="submit"]:hover {
+  background-image: linear-gradient(to left bottom, #ffc100, #ff9a00, #ff7400, #ff4d00, #ff0000);;
+  transform: scale(1.05);
+}
+
+.file-upload {
+  position: relative;
+  display: inline-block;
+}
+
+.file-upload input[type="file"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.file-upload .browse-button {
+  display: inline-block;
+  background-image: linear-gradient(to right, yellow, orange, red);
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.centered {
+  text-align: center;
+}
+
+ 
+  

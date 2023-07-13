@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="\static\css\styles.css">
+  <title>Login Page</title>
+ 
+</head>
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+<body>
+  <div class="container">
+    <img src="\static\Shinkan-Logo.jpg" alt="Logo" class="logo">
+    <h1>Login</h1>
+    <form method="post" action="{% url 'loginview' %}">
+        {% csrf_token %}
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username here" required>
+        </div>
+        <div>
+            <label for="passwor">Password:</label>
+            <input type="password" id="passwor" name="passwor" placeholder="Enter your password here" required>
+        </div>
+        <div>
+            <button class="scaling-button" type="submit"> Login</button>
+        </div>
+        <div>
+            <button class="scaling-button" type="button" onclick="window.alert('Registration functionality coming soon!')">Register</button>
+            <button class="scaling-button" type="button" onclick="window.alert('Forgot password functionality coming soon!')">Forgot Password</button>
+        </div>
+    </form>
+  </div>
+</body>
+</html>
